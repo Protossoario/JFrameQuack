@@ -52,7 +52,7 @@ public class JFrameQuack extends JFrame implements Runnable, MouseListener, KeyL
 	
 	Image fondo = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/fondo.png"));
 	Image lataIcon = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/basuraAluminio.png"));
-	Image patoImagen = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/caminaPato/patoCaminaIzq1.png"));
+	Image patoImagen = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/patoCamina/patoCaminaIzq1.png"));
 
 	public JFrameQuack() {
 		addMouseListener(this);

@@ -131,9 +131,6 @@ public class Jugador extends Secundarios {
 			caminaPato = false;
 			saltoPato = false;
 			aterrizadoPato = true;
-			
-			
-		
     }
 	
 	public void setLadoPato(boolean b){
