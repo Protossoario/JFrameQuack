@@ -126,7 +126,6 @@ public class JFrameQuack extends JFrame implements Runnable, MouseListener, KeyL
 		if(pato.getSaltoPato()){
 			pato.setVelocidadY(-8);
 			pato.setSaltoPato(false);
-			System.out.println("salto");
 		}
 		
 		// Se le aplica aceleracion al pato
@@ -194,12 +193,10 @@ public class JFrameQuack extends JFrame implements Runnable, MouseListener, KeyL
 				pato.setAterrizadoPato(true);
 				//auxAterrizado = true;
 				pato.setVelocidadY(0);
-				System.out.println("aterrizo");
 			}
 			// si esta saltando (se mueve hacia arriba), lo alineamos al tile de abajo (que equivale a alinearlo con el borde inferior)
 			else if (pato.getVelocidadY() < 0) {
 				pato.setPosY(TileMapRenderer.tilesToPixels(tile.y + 1));
-				System.out.println("topo borde inferior");
 				pato.setVelocidadY(0);
 			}
 			// apagamos su velocidad horizontal

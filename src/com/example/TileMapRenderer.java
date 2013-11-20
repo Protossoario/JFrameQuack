@@ -99,7 +99,6 @@ public class TileMapRenderer {
 
         // draw parallax background image
         if (background != null) {
-        	System.out.println("Pintando fondo");
             int x = offsetX *
                 (screenWidth - background.getWidth(null)) /
                 (screenWidth - mapWidth);
