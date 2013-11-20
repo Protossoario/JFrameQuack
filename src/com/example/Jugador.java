@@ -36,56 +36,95 @@ public class Jugador extends Secundarios {
 	private long tiempoActualPatoSaltoIzq = System.currentTimeMillis();
 	private long tiempoActualPatoSaltoDer = System.currentTimeMillis();
 	
-	
-
 	/**
 	* Constructor de Jugador
 	* @param posX es la posicion en x
 	* @param posY es la posicion en y
 	* @param image es la imagen del objeto
 	*/
-    public Jugador(int posX, int posY, Image image){
+    public Jugador(int posX, int posY){
         super(posX,posY,null);//se llama a constructor de la super clase
 		recogidaOrganica = 0;
 		recogidaPlastico = 0;
 		recogidaAluminio = 0;
 		
-		Image patoCaminaIzq1 = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/patoCamina/patoCaminaIzq1.png"));
-			Image patoCaminaIzq2 = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/patoCamina/patoCaminaIzq2.png"));
-			Image patoCaminaIzq3 = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/patoCamina/patoCaminaIzq3.png"));
-			Image patoCaminaIzq4 = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/patoCamina/patoCaminaIzq4.png"));
-			Image patoCaminaIzq5 = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/patoCamina/patoCaminaIzq5.png"));
-			Image patoCaminaIzq6 = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/patoCamina/patoCaminaIzq6.png"));
-			Image patoCaminaIzq7 = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/patoCamina/patoCaminaIzq7.png"));
-			Image patoCaminaIzq8 = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/patoCamina/patoCaminaIzq8.png"));
-			
-		Image patoCaminaDer1 = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/patoCamina/patoCaminaDer1.png"));
-			Image patoCaminaDer2 = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/patoCamina/patoCaminaDer2.png"));
-			Image patoCaminaDer3 = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/patoCamina/patoCaminaDer3.png"));
-			Image patoCaminaDer4 = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/patoCamina/patoCaminaDer4.png"));
-			Image patoCaminaDer5 = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/patoCamina/patoCaminaDer5.png"));
-			Image patoCaminaDer6 = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/patoCamina/patoCaminaDer6.png"));
-			Image patoCaminaDer7 = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/patoCamina/patoCaminaDer7.png"));
-			Image patoCaminaDer8 = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/patoCamina/patoCaminaDer8.png"));
-			
-		Image patoParadoIzq1 = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/patoParado/patoParadoIzq1.png"));
-			Image patoParadoIzq2 = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/patoParado/patoParadoIzq2.png"));
-			Image patoParadoIzq3 = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/patoParado/patoParadoIzq3.png"));
-			Image patoParadoIzq4 = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/patoParado/patoParadoIzq4.png"));
-			Image patoParadoIzq5 = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/patoParado/patoParadoIzq5.png"));
-			Image patoParadoIzq6 = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/patoParado/patoParadoIzq6.png"));
-			Image patoParadoIzq7 = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/patoParado/patoParadoIzq7.png"));
-			Image patoParadoIzq8 = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/patoParado/patoParadoIzq8.png"));
-			
-		Image patoParadoDer1 = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/patoParado/patoParadoDer1.png"));
-			Image patoParadoDer2 = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/patoParado/patoParadoDer2.png"));
-			Image patoParadoDer3 = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/patoParado/patoParadoDer3.png"));
-			Image patoParadoDer4 = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/patoParado/patoParadoDer4.png"));
-			Image patoParadoDer5 = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/patoParado/patoParadoDer5.png"));
-			Image patoParadoDer6 = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/patoParado/patoParadoDer6.png"));
-			Image patoParadoDer7 = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/patoParado/patoParadoDer7.png"));
-			Image patoParadoDer8 = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/patoParado/patoParadoDer8.png"));
-	
+		Image patoCaminaIzq1 = null;
+		Image patoCaminaIzq2 = null;
+		Image patoCaminaIzq3 = null;
+		Image patoCaminaIzq4 = null;
+		Image patoCaminaIzq5 = null;
+		Image patoCaminaIzq6 = null;
+		Image patoCaminaIzq7 = null;
+		Image patoCaminaIzq8 = null;
+		
+		Image patoCaminaDer1 = null;
+		Image patoCaminaDer2 = null;
+		Image patoCaminaDer3 = null;
+		Image patoCaminaDer4 = null;
+		Image patoCaminaDer5 = null;
+		Image patoCaminaDer6 = null;
+		Image patoCaminaDer7 = null;
+		Image patoCaminaDer8 = null;
+		
+		Image patoParadoIzq1 = null;
+		Image patoParadoIzq2 = null;
+		Image patoParadoIzq3 = null;
+		Image patoParadoIzq4 = null;
+		Image patoParadoIzq5 = null;
+		Image patoParadoIzq6 = null;
+		Image patoParadoIzq7 = null;
+		Image patoParadoIzq8 = null;
+		
+		Image patoParadoDer1 = null;
+		Image patoParadoDer2 = null;
+		Image patoParadoDer3 = null;
+		Image patoParadoDer4 = null;
+		Image patoParadoDer5 = null;
+		Image patoParadoDer6 = null;
+		Image patoParadoDer7 = null;
+		Image patoParadoDer8 = null;
+		
+		try {
+			patoCaminaIzq1 = JFrameQuack.loadImage("imagenes/patoCamina/patoCaminaIzq1.png");
+				patoCaminaIzq2 = JFrameQuack.loadImage("imagenes/patoCamina/patoCaminaIzq2.png");
+				patoCaminaIzq3 = JFrameQuack.loadImage("imagenes/patoCamina/patoCaminaIzq3.png");
+				patoCaminaIzq4 = JFrameQuack.loadImage("imagenes/patoCamina/patoCaminaIzq4.png");
+				patoCaminaIzq5 = JFrameQuack.loadImage("imagenes/patoCamina/patoCaminaIzq5.png");
+				patoCaminaIzq6 = JFrameQuack.loadImage("imagenes/patoCamina/patoCaminaIzq6.png");
+				patoCaminaIzq7 = JFrameQuack.loadImage("imagenes/patoCamina/patoCaminaIzq7.png");
+				patoCaminaIzq8 = JFrameQuack.loadImage("imagenes/patoCamina/patoCaminaIzq8.png");
+				
+			patoCaminaDer1 = JFrameQuack.loadImage("imagenes/patoCamina/patoCaminaDer1.png");
+				patoCaminaDer2 = JFrameQuack.loadImage("imagenes/patoCamina/patoCaminaDer2.png");
+				patoCaminaDer3 = JFrameQuack.loadImage("imagenes/patoCamina/patoCaminaDer3.png");
+				patoCaminaDer4 = JFrameQuack.loadImage("imagenes/patoCamina/patoCaminaDer4.png");
+				patoCaminaDer5 = JFrameQuack.loadImage("imagenes/patoCamina/patoCaminaDer5.png");
+				patoCaminaDer6 = JFrameQuack.loadImage("imagenes/patoCamina/patoCaminaDer6.png");
+				patoCaminaDer7 = JFrameQuack.loadImage("imagenes/patoCamina/patoCaminaDer7.png");
+				patoCaminaDer8 = JFrameQuack.loadImage("imagenes/patoCamina/patoCaminaDer8.png");
+				
+			patoParadoIzq1 = JFrameQuack.loadImage("imagenes/patoParado/patoParadoIzq1.png");
+				patoParadoIzq2 = JFrameQuack.loadImage("imagenes/patoParado/patoParadoIzq2.png");
+				patoParadoIzq3 = JFrameQuack.loadImage("imagenes/patoParado/patoParadoIzq3.png");
+				patoParadoIzq4 = JFrameQuack.loadImage("imagenes/patoParado/patoParadoIzq4.png");
+				patoParadoIzq5 = JFrameQuack.loadImage("imagenes/patoParado/patoParadoIzq5.png");
+				patoParadoIzq6 = JFrameQuack.loadImage("imagenes/patoParado/patoParadoIzq6.png");
+				patoParadoIzq7 = JFrameQuack.loadImage("imagenes/patoParado/patoParadoIzq7.png");
+				patoParadoIzq8 = JFrameQuack.loadImage("imagenes/patoParado/patoParadoIzq8.png");
+				
+			patoParadoDer1 = JFrameQuack.loadImage("imagenes/patoParado/patoParadoDer1.png");
+				patoParadoDer2 = JFrameQuack.loadImage("imagenes/patoParado/patoParadoDer2.png");
+				patoParadoDer3 = JFrameQuack.loadImage("imagenes/patoParado/patoParadoDer3.png");
+				patoParadoDer4 = JFrameQuack.loadImage("imagenes/patoParado/patoParadoDer4.png");
+				patoParadoDer5 = JFrameQuack.loadImage("imagenes/patoParado/patoParadoDer5.png");
+				patoParadoDer6 = JFrameQuack.loadImage("imagenes/patoParado/patoParadoDer6.png");
+				patoParadoDer7 = JFrameQuack.loadImage("imagenes/patoParado/patoParadoDer7.png");
+				patoParadoDer8 = JFrameQuack.loadImage("imagenes/patoParado/patoParadoDer8.png");
+		}
+		catch (Exception ex) {
+			System.out.println("Error cargando las imagenes del jugador");
+			System.out.println(ex);
+		}
 		
 		animPatoCaminaIzq = new Animacion();
 			animPatoCaminaIzq.sumaCuadro(patoCaminaIzq1, 130);

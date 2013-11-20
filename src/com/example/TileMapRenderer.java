@@ -99,6 +99,7 @@ public class TileMapRenderer {
 
         // draw parallax background image
         if (background != null) {
+        	System.out.println("Pintando fondo");
             int x = offsetX *
                 (screenWidth - background.getWidth(null)) /
                 (screenWidth - mapWidth);
@@ -124,10 +125,15 @@ public class TileMapRenderer {
         }
 
         // draw player
-        g.drawImage(p.getImagenActual(),
-            Math.round(p.getPosX()) + offsetX,
-            Math.round(p.getPosY()) + offsetY,
-            null);
+        if (p.getImagenActual() != null) {
+        	g.drawImage(p.getImagenActual(),
+	            Math.round(p.getPosX()) + offsetX,
+	            Math.round(p.getPosY()) + offsetY,
+	            null);
+        }
+        else {
+        	System.out.println("Imagen del jugador nula");
+        }
 
         // draw sprites
         /*Iterator i = map.getSprites();

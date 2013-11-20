@@ -9,7 +9,6 @@ package com.example;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.KeyEvent;
@@ -50,9 +49,7 @@ public class JFrameQuack extends JFrame implements Runnable, MouseListener, KeyL
 	
 	private ArrayList<Image> tiles;
 	
-	Image fondo = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/fondo.png"));
-	Image lataIcon = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/basuraAluminio.png"));
-	Image patoImagen = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/patoCamina/patoCaminaIzq1.png"));
+	Image lataIcon = loadImage("imagenes/basuraAluminio.png");
 
 	public JFrameQuack() {
 		addMouseListener(this);
@@ -61,12 +58,11 @@ public class JFrameQuack extends JFrame implements Runnable, MouseListener, KeyL
 		setSize(WIDTH,HEIGHT); 
 		setBackground(Color.white);
 		
-		Image basuraAluminio = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/basuraAluminio.png"));
+		Image basuraAluminio = loadImage("imagenes/basuraAluminio.png");
 					
-		Image boteAlum = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("imagenes/boteAluminio.png"));
+		Image boteAlum = loadImage("imagenes/boteAluminio.png");
 		
-		
-		pato = new Jugador(300, 500, patoImagen);
+		pato = new Jugador(300, 500);
 		
 		pato.setVelocidadY(10);
 		
@@ -74,6 +70,7 @@ public class JFrameQuack extends JFrame implements Runnable, MouseListener, KeyL
 		
 		boteAluminio = new Bote(40, 500, boteAlum, 2);		
 		
+		Image fondo = loadImage("imagenes/fondo.png");
 		mapRenderer = new TileMapRenderer();
 		mapRenderer.setBackground(fondo);
 		
@@ -132,19 +129,15 @@ public class JFrameQuack extends JFrame implements Runnable, MouseListener, KeyL
 			System.out.println("salto");
 		}
 		
-		
+		// Se le aplica aceleracion al pato
 		pato.setVelocidadY(pato.getVelocidadY()+0.2);
-			
-			
-		
-		
-		
+
 		checaColision();
 	}
 	
 	public void colisionPatoBasura(){
 		for(int i=0; i<basuras.size(); i++){
-			Basura aux = (Basura) basuras.get(i);
+			Basura aux = basuras.get(i);
 			
 			if(pato.intersecta(aux)){
 				pato.recogerBasura(aux);
@@ -170,7 +163,6 @@ public class JFrameQuack extends JFrame implements Runnable, MouseListener, KeyL
 		double newX = oldX + pato.getVelocidadX();
 		Point tile = getTileCollision(pato, newX, pato.getPosY());
 		if (tile == null) {
-			
 			pato.setDoublePosX(newX);
 		}
 		// si hay colision, dependiendo de si el pato se esta moviendo o no, ajustamos su posicion
@@ -250,7 +242,6 @@ public class JFrameQuack extends JFrame implements Runnable, MouseListener, KeyL
 		}
 		
 		if (e.getKeyCode() ==  KeyEvent.VK_UP && pato.getAterrizadoPato()){
-			//System.out.println(pato.getVelocidadY());
 			pato.setSaltoPato(true);
 			pato.setAterrizadoPato(false);
 			
@@ -299,28 +290,29 @@ public class JFrameQuack extends JFrame implements Runnable, MouseListener, KeyL
 	public void paint (Graphics g) {
 		// Inicializan el DoubleBuffer                
 		dbImage = createImage (this.getSize().width, this.getSize().height);
-		dbg = dbImage.getGraphics ();
+		dbg = dbImage.getGraphics();
 		
 		// Actualiza la imagen de fondo.
-		dbg.setColor(getBackground ());
+		dbg.setColor(getBackground());
 		dbg.fillRect(0, 0, this.getSize().width, this.getSize().height);
 		
 		// Actualiza el Foreground.
 		dbg.setColor(getForeground());
 		paint1(dbg);
 
-		paintHUD(g);
+		paintHUD(dbg);
 		
 		// Dibuja la imagen actualizada
 		g.drawImage (dbImage, 0, 0, this);
 	}
 	
 	public void paint1 (Graphics g) {                                     
-		if(g != null) { //Si ya se creo el objeto grafico g
+		if (g != null) { //Si ya se creo el objeto grafico g
 			
 			Graphics2D g2d = (Graphics2D)g;
 			mapRenderer.draw(g2d, map, WIDTH, HEIGHT);
 				
+			/*
 			for(int i=0; i<basuras.size(); i++) {
 				Basura aux = (Basura) basuras.get(i);
 				
@@ -328,22 +320,27 @@ public class JFrameQuack extends JFrame implements Runnable, MouseListener, KeyL
 			}
 			
 			g.drawImage(boteAluminio.getImagenI() ,boteAluminio.getPosX(), boteAluminio.getPosY(), this);
+			*/
 		}
 		else {
 			System.out.println("cargando");
 		}
-		
 	}
 
 	public void paintHUD(Graphics g) {
-		g.drawImage(lataIcon, 0, 0, null);
+		g.setColor(Color.WHITE);
+		if (lataIcon != null) {
+			g.drawImage(lataIcon, 0, 0, null);
+		}
+		else {
+			System.out.println("Imagen lataIcon es null");
+		}
 		g.drawString("Aluminio recogido: " + pato.getRecogidaAluminio(),
 			       15, 15);
 	}	
 	
 	public void run() {
 		while(true) {
-			
 			actualiza(); //Se actualiza y checa colision
 			repaint();
 			try{
@@ -422,7 +419,7 @@ public class JFrameQuack extends JFrame implements Runnable, MouseListener, KeyL
         return newMap;
     }
 	
-	 public Image loadImage(String name) {
+	 public static Image loadImage(String name) {
         String filename = "imagenes/" + name;
         return new ImageIcon(filename).getImage();
     }
