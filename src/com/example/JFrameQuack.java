@@ -29,6 +29,7 @@ import java.awt.*;
  *
  * @author Owner
  */
+@SuppressWarnings("serial")
 public class JFrameQuack extends JFrame implements Runnable, MouseListener, KeyListener {
 	
 	public static final int WIDTH = 800; //Constante del ancho del JFrame
@@ -391,7 +392,7 @@ public class JFrameQuack extends JFrame implements Runnable, MouseListener, KeyL
                 // check if the char represents tile A, B, C etc.
                 int tile = ch - 'A';
                 if (tile >= 0 && tile < tiles.size()) {
-                    newMap.setTile(x, y, (Image)tiles.get(tile));
+                    newMap.setTile(x, y, tiles.get(tile));
                 }
 
                 // check if the char represents a sprite
@@ -429,7 +430,7 @@ public class JFrameQuack extends JFrame implements Runnable, MouseListener, KeyL
 	public void loadTileImages() {
         // keep looking for tile A,B,C, etc. this makes it
         // easy to drop new tiles in the images/ directory
-        tiles = new ArrayList();
+        tiles = new ArrayList<Image>();
         char ch = 'A';
         while (true) {
             String name = "tile_" + ch + ".png";
