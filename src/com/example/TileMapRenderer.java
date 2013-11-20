@@ -1,11 +1,7 @@
 package com.example;
 
 import java.awt.*;
-import java.util.Iterator;
 
-import java.awt.image.BufferedImage;
-import java.net.URL;
-import javax.imageio.ImageIO;
 	/**
     The TileMapRenderer class draws a TileMap on the screen.
     It draws all tiles, sprites, and an optional background image

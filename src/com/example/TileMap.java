@@ -1,9 +1,6 @@
 package com.example;
 
 import java.awt.Image;
-import java.util.LinkedList;
-import java.util.Iterator;
-
 
 /**
     The TileMap class contains the data for a tile-based
