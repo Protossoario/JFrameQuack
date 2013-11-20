@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Animacion{
 	
-	private ArrayList cuadros;
+	private ArrayList<CuadroDeAnimacion> cuadros;
 	private int indiceCuadroActual;
 	private long tiempoDeAnimacion;
 	private long duracionTotal;
@@ -18,7 +18,7 @@ public class Animacion{
 		Crea una nueva Animacion vacia
 	*/
 	public Animacion(){
-		cuadros = new ArrayList();
+		cuadros = new ArrayList<CuadroDeAnimacion>();
 		duracionTotal = 0;
 		iniciar();
 	}
@@ -71,7 +71,7 @@ public class Animacion{
 	}
 	
 	private CuadroDeAnimacion getCuadro(int i){
-		return (CuadroDeAnimacion)cuadros.get(i);
+		return cuadros.get(i);
 	}
 	
 	public class CuadroDeAnimacion{

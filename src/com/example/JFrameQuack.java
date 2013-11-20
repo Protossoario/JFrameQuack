@@ -6,9 +6,7 @@
 
 package com.example;
 
-import java.applet.AudioClip;
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -16,19 +14,13 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.net.URL;
 import java.util.LinkedList;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import java.lang.System;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.awt.*;
@@ -41,7 +33,7 @@ public class JFrameQuack extends JFrame implements Runnable, MouseListener, KeyL
 	
 	public static final int WIDTH = 800; //Constante del ancho del JFrame
 	public static final int HEIGHT = 600; //Constante de la altura del JFrame
-	/** TODO: �Se usa esto? */
+	/** TODO: Se usa esto? */
 	public static final double TIEMPO = 0.016; //Constante de tiempo
 	
 	private Image dbImage; 
